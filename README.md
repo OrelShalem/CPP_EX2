@@ -32,12 +32,12 @@ The `SquareMat` class provides a full implementation of a square matrix with a w
 
 To build the program:
 ```
-make
+make 
 ```
 
 To run the usage example:
 ```
-./Main
+make Main
 ```
 
 To run the tests:
@@ -45,6 +45,8 @@ To run the tests:
 make test
 ./Test
 ```
+To run the valgrind:
+make valgrind
 
 ## Implemented Features
 
