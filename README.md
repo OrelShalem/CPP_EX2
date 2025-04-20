@@ -46,7 +46,9 @@ make test
 ./Test
 ```
 To run the valgrind:
+```
 make valgrind
+```
 
 ## Implemented Features
 
