@@ -195,6 +195,41 @@ namespace squaremat // Start of the squaremat namespace
     }
 
     /**
+     * @brief Assignment operator implementation
+     * @param other The matrix to assign from
+     * @return Reference to this matrix after assignment
+     */
+    SquareMat &SquareMat::operator=(const SquareMat &other) // Assignment operator definition
+    {
+        if (this == &other) // Check for self-assignment
+        {
+            return *this; // Return if self-assignment
+        }
+
+        // Free current resources
+        for (size_t i = 0; i < size; i++) // Loop through current rows
+        {
+            delete[] matrix[i]; // Delete each row
+        }
+        delete[] matrix; // Delete the array of pointers
+
+        // Allocate new resources
+        size = other.size;           // Update size
+        matrix = new double *[size]; // Allocate new array of pointers
+
+        for (size_t i = 0; i < size; i++) // Loop through rows
+        {
+            matrix[i] = new double[size];     // Allocate new row
+            for (size_t j = 0; j < size; j++) // Loop through columns
+            {
+                matrix[i][j] = other.matrix[i][j]; // Copy values from other matrix
+            }
+        }
+
+        return *this; // Return reference to modified matrix
+    }
+
+    /**
      * @brief Compound assignment addition operator implementation
      * @param other Matrix to add to this matrix
      * @return Reference to this matrix after addition

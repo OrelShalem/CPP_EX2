@@ -73,6 +73,13 @@ namespace squaremat // Start of namespace definition
         }
 
         /**
+         * @brief Assignment operator
+         * @param other The matrix to assign from
+         * @return Reference to this matrix after assignment
+         */
+        SquareMat &operator=(const SquareMat &other); // Declaration of assignment operator
+
+        /**
          * @brief Addition operator for matrices
          * @param other Matrix to add to this matrix
          * @return New matrix containing the sum
