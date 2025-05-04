@@ -1,4 +1,4 @@
-// orel8155@gmail.com - Email address of the author
+// orel8155@gmail.com
 #include "squaremat.hpp" // Include the header file for SquareMat class
 
 namespace squaremat // Start of the squaremat namespace
@@ -140,17 +140,7 @@ namespace squaremat // Start of the squaremat namespace
 
         for (int i = 1; i < power; i++) // Loop power-1 times
         {
-            // Perform multiplication
-            SquareMat temp = result * (*this); // Multiply result by original matrix
-
-            // Manually copy the result to avoid using operator=
-            for (size_t r = 0; r < size; r++) // Loop through rows
-            {
-                for (size_t c = 0; c < size; c++) // Loop through columns
-                {
-                    result.matrix[r][c] = temp.matrix[r][c]; // Copy each element
-                }
-            }
+            result *= *this; // Multiply result by original matrix
         }
 
         return result; // Return the resulting matrix
@@ -287,25 +277,7 @@ namespace squaremat // Start of the squaremat namespace
         }
 
         SquareMat temp = *this * other; // Calculate product using regular multiplication
-
-        // Free current resources
-        for (size_t i = 0; i < size; i++) // Loop through rows
-        {
-            delete[] matrix[i]; // Delete each row
-        }
-
-        // Preserve size (since size doesn't change)
-
-        // Allocate new rows
-        for (size_t i = 0; i < size; i++) // Loop through rows
-        {
-            matrix[i] = new double[size]; // Allocate new row
-            // Copy data from temporary result
-            for (size_t j = 0; j < size; j++) // Loop through columns
-            {
-                matrix[i][j] = temp.matrix[i][j]; // Copy element from temporary result
-            }
-        }
+        *this = temp;                   // Preserve size (since size doesn't change)
 
         return *this; // Return reference to modified matrix
     }

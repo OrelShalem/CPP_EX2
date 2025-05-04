@@ -1,4 +1,4 @@
-// orel8155@gmail.com - Email address of the author
+// orel8155@gmail.com
 #pragma once         // Ensures the header file is included only once
 #include <iostream>  // Include for input/output operations
 #include <stdexcept> // Include for standard exceptions
@@ -20,8 +20,8 @@ namespace squaremat // Start of namespace definition
     class SquareMat // Class definition for square matrix
     {
     private:
-        double **matrix; ///< 2D array to store matrix elements - Pointer to array of pointers
         size_t size;     ///< Size of the square matrix (number of rows/columns) - Unsigned integer
+        double **matrix; ///< 2D array to store matrix elements - Pointer to array of pointers
 
     public:
         /**
@@ -29,7 +29,7 @@ namespace squaremat // Start of namespace definition
          * @param size The size of the square matrix (number of rows/columns)
          * @throws std::invalid_argument if size is not positive
          */
-        SquareMat(size_t size) : matrix(new double *[size]), size(size) // Constructor with initialization list
+        SquareMat(size_t size) : size(size), matrix(new double *[size]) // Constructor with initialization list
         {
             if (size <= 0) // Check if size is valid
             {
@@ -45,7 +45,7 @@ namespace squaremat // Start of namespace definition
          * @brief Copy constructor
          * @param other The matrix to copy
          */
-        SquareMat(const SquareMat &other) : matrix(new double *[other.size]), size(other.size) // Copy constructor with initialization list
+        SquareMat(const SquareMat &other) : size(other.size), matrix(new double *[other.size]) // Copy constructor with initialization list
         {
             for (size_t i = 0; i < size; i++) // Loop through each row
             {

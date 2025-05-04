@@ -57,6 +57,49 @@ TEST_CASE("Matrix Addition")
 }
 
 /**
+ * @brief Test matrix addition operation with other matrix not the same size
+ */
+TEST_CASE("Matrix Addition with other matrix not the same size")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    SquareMat m2(3);
+    m2[0][0] = 5;
+    m2[0][1] = 6;
+    m2[1][0] = 7;
+    m2[1][1] = 8;
+    m2[2][0] = 9;
+    m2[2][1] = 10;
+
+    CHECK_THROWS_AS(m1 + m2, std::invalid_argument);
+}
+
+/**
+ * @brief Test matrix subtraction operation with other matrix not the same size
+ */
+TEST_CASE("Matrix Subtraction with other matrix not the same size")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    SquareMat m2(3);
+    m2[0][0] = 5;
+    m2[0][1] = 6;
+    m2[1][0] = 7;
+    m2[1][1] = 8;
+    m2[2][0] = 9;
+    m2[2][1] = 10;
+
+    CHECK_THROWS_AS(m1 - m2, std::invalid_argument);
+}
+/**
  * @brief Test matrix subtraction operation
  */
 TEST_CASE("Matrix Subtraction")
@@ -81,6 +124,24 @@ TEST_CASE("Matrix Subtraction")
 }
 
 /**
+ * @brief Test matrix unary minus operation
+ */
+TEST_CASE("Matrix Unary Minus")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    SquareMat m2 = -m1;
+    CHECK(m2[0][0] == -1);
+    CHECK(m2[0][1] == -2);
+    CHECK(m2[1][0] == -3);
+    CHECK(m2[1][1] == -4);
+}
+
+/**
  * @brief Test matrix multiplication operation
  */
 TEST_CASE("Matrix Multiplication")
@@ -102,6 +163,49 @@ TEST_CASE("Matrix Multiplication")
     CHECK(m5[0][1] == 22);
     CHECK(m5[1][0] == 43);
     CHECK(m5[1][1] == 50);
+}
+
+/**
+ * @brief Test multiplication operation with other matrix not the same size
+ */
+TEST_CASE("Matrix Multiplication with other matrix not the same size")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    SquareMat m2(3);
+    m2[0][0] = 5;
+    m2[0][1] = 6;
+    m2[1][0] = 7;
+    m2[1][1] = 8;
+    m2[2][0] = 9;
+    m2[2][1] = 10;
+
+    CHECK_THROWS_AS(m1 * m2, std::invalid_argument);
+}
+/**
+ * @brief Test multiplication operation with other matrix not the same size
+ */
+TEST_CASE("Matrix Multiplication with other matrix not the same size")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    SquareMat m2(3);
+    m2[0][0] = 5;
+    m2[0][1] = 6;
+    m2[1][0] = 7;
+    m2[1][1] = 8;
+    m2[2][0] = 9;
+    m2[2][1] = 10;
+
+    CHECK_THROWS_AS(m1 % m2, std::invalid_argument);
 }
 
 /**
@@ -263,6 +367,28 @@ TEST_CASE("Matrix Compound Assignment +=")
 }
 
 /**
+ * @brief Test compound assignment addition operation with other matrix not the same size
+ */
+TEST_CASE("Matrix Compound Assignment += with other matrix not the same size")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    SquareMat m2(3);
+    m2[0][0] = 5;
+    m2[0][1] = 6;
+    m2[1][0] = 7;
+    m2[1][1] = 8;
+    m2[2][0] = 9;
+    m2[2][1] = 10;
+
+    CHECK_THROWS_AS(m1 += m2, std::invalid_argument);
+}
+
+/**
  * @brief Test compound assignment subtraction operation
  */
 TEST_CASE("Matrix Compound Assignment -=")
@@ -286,6 +412,28 @@ TEST_CASE("Matrix Compound Assignment -=")
     CHECK(m4[0][1] == -4);
     CHECK(m4[1][0] == -4);
     CHECK(m4[1][1] == -4);
+}
+
+/**
+ * @brief Test compound assignment subtraction operation with other matrix not the same size
+ */
+TEST_CASE("Matrix Compound Assignment -= with other matrix not the same size")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    SquareMat m2(3);
+    m2[0][0] = 5;
+    m2[0][1] = 6;
+    m2[1][0] = 7;
+    m2[1][1] = 8;
+    m2[2][0] = 9;
+    m2[2][1] = 10;
+
+    CHECK_THROWS_AS(m1 -= m2, std::invalid_argument);
 }
 
 /**
@@ -315,6 +463,28 @@ TEST_CASE("Matrix Compound Assignment *= (matrix)")
 }
 
 /**
+ * @brief Test compound assignment matrix multiplication operation with other matrix not the same size
+ */
+TEST_CASE("Matrix Compound Assignment *= with other matrix not the same size")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    SquareMat m2(3);
+    m2[0][0] = 5;
+    m2[0][1] = 6;
+    m2[1][0] = 7;
+    m2[1][1] = 8;
+    m2[2][0] = 9;
+    m2[2][1] = 10;
+
+    CHECK_THROWS_AS(m1 *= m2, std::invalid_argument);
+}
+
+/**
  * @brief Test compound assignment scalar multiplication operation
  */
 TEST_CASE("Matrix Compound Assignment *= (scalar)")
@@ -332,6 +502,36 @@ TEST_CASE("Matrix Compound Assignment *= (scalar)")
     CHECK(m6[0][1] == 4);
     CHECK(m6[1][0] == 6);
     CHECK(m6[1][1] == 8);
+}
+
+/**
+ * @brief Test compound assignment scalar multiplication operation with zero scalar
+ */
+TEST_CASE("Matrix Compound Assignment *= (scalar) with zero scalar")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    CHECK_THROWS_AS(m1 *= 0, std::invalid_argument);
+}
+
+/**
+ * @brief Test compound assignment division operation with zero scalar
+ */
+TEST_CASE("Matrix Compound Assignment /= (zero scalar)")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    // /= zero scalar
+    SquareMat m7 = m1;
+    CHECK_THROWS_AS(m7 /= 0, std::invalid_argument);
 }
 
 /**
@@ -381,6 +581,28 @@ TEST_CASE("Matrix Compound Assignment %= (matrix)")
 }
 
 /**
+ * @brief Test compound assignment element-wise multiplication operation with other matrix not the same size
+ */
+TEST_CASE("Matrix Compound Assignment %= with other matrix not the same size")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    SquareMat m2(3);
+    m2[0][0] = 5;
+    m2[0][1] = 6;
+    m2[1][0] = 7;
+    m2[1][1] = 8;
+    m2[2][0] = 9;
+    m2[2][1] = 10;
+
+    CHECK_THROWS_AS(m1 %= m2, std::invalid_argument);
+}
+
+/**
  * @brief Test compound assignment modulo operation
  */
 TEST_CASE("Matrix Compound Assignment %= (scalar)")
@@ -398,6 +620,42 @@ TEST_CASE("Matrix Compound Assignment %= (scalar)")
     CHECK(m9[0][1] == 2);
     CHECK(m9[1][0] == 3);
     CHECK(m9[1][1] == 0);
+}
+
+/**
+ * @brief Test compound assignment modulo operation with zero scalar
+ */
+TEST_CASE("Matrix Compound Assignment %= (scalar) with zero scalar")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    CHECK_THROWS_AS(m1 %= 0, std::invalid_argument);
+}
+
+/**
+ * @brief Test compound assignment modulo operation with other matrix not the same size
+ */
+TEST_CASE("Matrix Compound Assignment %= with other matrix not the same size")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    SquareMat m2(3);
+    m2[0][0] = 5;
+    m2[0][1] = 6;
+    m2[1][0] = 7;
+    m2[1][1] = 8;
+    m2[2][0] = 9;
+    m2[2][1] = 10;
+
+    CHECK_THROWS_AS(m1 %= m2, std::invalid_argument);
 }
 
 /**
@@ -538,4 +796,48 @@ TEST_CASE("Matrix Power")
     CHECK(m2p[0][1] == 10);
     CHECK(m2p[1][0] == 15);
     CHECK(m2p[1][1] == 22);
+}
+
+/**
+ * @brief Test matrix power operations for different exponents
+ */
+TEST_CASE("Matrix Power with negative exponent")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    CHECK_THROWS_AS(m1 ^ -1, std::invalid_argument);
+}
+
+/**
+ * @brief Test matrix index operator for non-const version if out of bounds
+ */
+TEST_CASE("Matrix Index Operator (non-const) out of bounds")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    CHECK_THROWS_AS(m1[2], std::out_of_range);
+}
+
+/**
+ * @brief Test matrix index operator for const version if out of bounds
+ */
+TEST_CASE("Matrix Index Operator (const) out of bounds")
+{
+    SquareMat m1(2);
+    m1[0][0] = 1;
+    m1[0][1] = 2;
+    m1[1][0] = 3;
+    m1[1][1] = 4;
+
+    const SquareMat m2 = m1;
+
+    CHECK_THROWS_AS(m2[2], std::out_of_range);
 }
