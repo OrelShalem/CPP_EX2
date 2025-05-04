@@ -14,6 +14,36 @@ The `SquareMat` class provides a full implementation of a square matrix with a w
 - Comparison operators
 - Increment and decrement operators
 
+## Class Details
+
+The `SquareMat` class is a comprehensive implementation of a square matrix in C++ with the following features:
+
+### Characteristics
+- Square matrix with equal number of rows and columns
+- Uses dynamic memory allocation for matrix storage
+- Stores values of type `double`
+
+### Supported Operations
+- **Basic Arithmetic Operations**: Addition (`+`), Subtraction (`-`), Multiplication (`*`), Division (`/`)
+- **Matrix Multiplication**: Multiplication between two square matrices
+- **Element-wise Multiplication**: Multiply corresponding elements between two matrices using the `%` operator
+- **Power**: Raise a matrix to an integer power using the `^` operator
+- **Determinant Calculation**: Using the `!` operator
+- **Increment and Decrement**: `++` and `--` operators to modify all matrix elements
+- **Element Access**: Using the `[][]` operator
+- **Comparison**: `==`, `!=`, `<`, `>`, `<=`, `>=` operators for matrix comparison
+- **I/O Operations**: `<<` and `>>` operators for reading and writing matrices
+
+### Memory Management
+- **Copy Constructor**: Creates a deep copy of a matrix
+- **Assignment Operator**: Safe assignment with handling of self-assignment
+- **Destructor**: Properly releases all allocated memory
+
+### Exception Handling
+- Validation of matrix size
+- Compatibility checks between matrix sizes in operations
+- Handling of division by zero and other invalid input cases
+
 ## Project Structure
 
 - `squaremat.hpp` - Header file containing the class definition
